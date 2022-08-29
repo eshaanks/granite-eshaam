@@ -9,6 +9,14 @@ gem "bcrypt", "~> 3.1.13"
 
 gem "simplecov", require: false, group: :test
 
+group :development, :test do
+  # Rails integration for factory_bot, a replacement for fixtures
+  gem "factory_bot_rails"
+
+  # For auto-generating demo data
+  gem "faker"
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem "rails", "~> 6.1.4", ">= 6.1.4.1"
 # Use sqlite3 as the database for Active Record
