@@ -5,6 +5,7 @@ json.tasks do
     json.partial! "tasks/task", task: pending_task
     json.extract! pending_task,
       :progress,
+      :status
   end
 
   json.completed @completed_tasks

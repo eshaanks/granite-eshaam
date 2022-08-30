@@ -8,8 +8,8 @@ class TasksController < ApplicationController
 
   def index
     tasks = policy_scope(Task)
-    @pending_tasks = tasks.pending.includes(:assigned_user)
-    @completed_tasks = tasks.completed
+    @pending_tasks = tasks.includes(:assigned_user).of_status(:pending)
+    @completed_tasks = tasks.of_status(:completed)
   end
 
   def show
@@ -51,6 +51,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title, :assigned_user_id, :progress)
+      params.require(:task).permit(:title, :assigned_user_id, :progress, :status)
     end
 end
