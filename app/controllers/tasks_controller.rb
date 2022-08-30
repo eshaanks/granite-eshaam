@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 
   def show
     authorize @task
+    @comments = @task.comments.order("created_at DESC")
   end
 
   def create
