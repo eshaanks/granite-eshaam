@@ -17,6 +17,10 @@ group :development, :test do
   gem "faker"
 end
 
+gem "bundler-audit", require: false
+
+gem "ruby_audit", require: false
+
 gem "pundit"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
