@@ -32,6 +32,7 @@ class TasksController < ApplicationController
 
   def destroy
     authorize @task
+    byebug
     @task.destroy!
     respond_with_success(t("successfully_deleted", entity: "Task")) unless params.key?(:quiet)
   end
