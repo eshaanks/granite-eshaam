@@ -2,15 +2,19 @@
 
 class Task < ApplicationRecord
   enum progress: { pending: "pending", completed: "completed" }
+  MAX_TITLE_LENGTH = 50
 
   has_many :comments, dependent: :destroy
   belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
   belongs_to :task_owner, foreign_key: "task_owner_id", class_name: "User"
 
-  validates :title, presence: true, length: { maximum: 50 }
+  validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
   validates :slug, uniqueness: true
 
   before_create :set_slug
+
+  enum status: { unstarred: "unstarred", starred: "starred" }
+  RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
 
   private
 
