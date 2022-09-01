@@ -27,7 +27,6 @@ class TasksController < ApplicationController
   def update
     authorize @task
     @task.update!(task_params)
-    byebug
     respond_with_success(t("successfully_updated", entity: "Task")) unless params.key?(:quiet)
   end
 

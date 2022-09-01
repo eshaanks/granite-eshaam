@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# require "/Users/user/granite-eshaanks/app/sidekiq/user_notifications_worker_job.rb"
 class TodoNotificationService
   attr_reader :users_to_notify
 
@@ -20,7 +21,7 @@ class TodoNotificationService
 
     def notify_users
       users_to_notify.each do |user|
-        UserNotificationsWorker.perform_async(user.id)
+        UserNotificationsWorkerJob.perform_async(user.id)
       end
     end
 
