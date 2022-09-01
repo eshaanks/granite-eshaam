@@ -9,6 +9,7 @@ import { initializeLogger } from "common/logger";
 import { Login, Signup } from "components/Authentication";
 import PrivateRoute from "components/Common/PrivateRoute";
 import Dashboard from "components/Dashboard";
+import MyPreferences from "components/MyPreferences";
 import PageLoader from "components/PageLoader";
 import { CreateTask, ShowTask, EditTask } from "components/Tasks";
 import { getFromLocalStorage } from "utils/storage";
@@ -40,6 +41,7 @@ const App = () => {
         <Route exact component={ShowTask} path="/tasks/:slug/show" />
         <Route exact component={CreateTask} path="/tasks/create" />
         <Route exact component={Login} path="/login" />
+        <Route exact component={MyPreferences} path="/my/preferences" />
         <PrivateRoute
           component={Dashboard}
           condition={isLoggedIn}
