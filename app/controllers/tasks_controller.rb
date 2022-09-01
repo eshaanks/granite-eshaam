@@ -27,12 +27,12 @@ class TasksController < ApplicationController
   def update
     authorize @task
     @task.update!(task_params)
+    byebug
     respond_with_success(t("successfully_updated", entity: "Task")) unless params.key?(:quiet)
   end
 
   def destroy
     authorize @task
-    byebug
     @task.destroy!
     respond_with_success(t("successfully_deleted", entity: "Task")) unless params.key?(:quiet)
   end
